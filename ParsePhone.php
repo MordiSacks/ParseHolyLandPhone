@@ -1,3 +1,4 @@
+<?php
 class ParsePhone {
     /** @var int|string */
     protected $phoneNumber;
