@@ -10,7 +10,7 @@ class ParsePhone {
      */
     public function __construct($phoneNumber) {
         $this->phoneNumber = $phoneNumber;
-
+        $this->fromInternational();
     }
 
     /**
@@ -156,20 +156,11 @@ class ParsePhone {
     }
 
     /**
-     * Transforms phone number to international format
-     * 021231234  > 97221231234
-     * 0501231234 > 972501231234
-     */
-    public function toInternational() {
-        $this->phoneNumber = preg_replace('/^(0)(\d{8,9})$/', '972$2', $this->phoneNumber);
-    }
-
-    /**
      * Transforms phone number to local format
      * 97221231234  > 021231234
      * 972501231234 > 0501231234
      */
-    public function fromInternational() {
+    protected function fromInternational() {
         $this->phoneNumber = preg_replace('/^(972)(\d{8,9})$/', '0$2', $this->phoneNumber);
     }
 
@@ -178,5 +169,14 @@ class ParsePhone {
      */
     public function getPhoneNumber() {
         return $this->phoneNumber;
+    }
+
+    /**
+     * Returns phone number transformed to international format
+     * 021231234  > 97221231234
+     * 0501231234 > 972501231234
+     */
+    public function getInternational() {
+        return preg_replace('/^(0)(\d{8,9})$/', '972$2', $this->phoneNumber);
     }
 }
