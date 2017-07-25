@@ -31,6 +31,10 @@ class ParsePhone {
         return (bool)preg_match('/^((0[23489][2356789]|0[57][10234569]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
     }
 
+    public function isNotValid() {
+        return !$this->isValid();
+    }
+
     /**
      * Checks if phone number is Israeli
      *
@@ -38,6 +42,10 @@ class ParsePhone {
      */
     public function isIsraeli() {
         return (bool)preg_match('/^((0[23489][356789]|0[57][102345]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
+    }
+
+    public function isNotIsraeli() {
+        return !$this->isIsraeli();
     }
 
     /**
@@ -49,6 +57,11 @@ class ParsePhone {
         return (bool)preg_match('/^(0[23489]2|05[69]\d|)\d{6}$/', $this->phoneNumber);
     }
 
+    public function isNotPalestinian() {
+        return !$this->isPalestinian();
+    }
+
+
     /**
      * Checks if phone number is lan line
      *
@@ -56,6 +69,10 @@ class ParsePhone {
      */
     public function isLanLine() {
         return (bool)preg_match('/^0([23489][2356789]|7\d{2})\d{6}$/', $this->phoneNumber);
+    }
+
+    public function isNotLanLine() {
+        return !$this->isLanLine();
     }
 
     /**
@@ -67,6 +84,10 @@ class ParsePhone {
         return (bool)preg_match('/^0[5][10234569]\d{7}$/', $this->phoneNumber);
     }
 
+    public function isNotMobile() {
+        return !$this->isMobile();
+    }
+
     /**
      * Checks if phone number is special (*1234)
      *
@@ -76,6 +97,11 @@ class ParsePhone {
         return (bool)preg_match('/^\*\d{4}$/', $this->phoneNumber);
     }
 
+    public function isNotSpecial() {
+        return !$this->isSpecial();
+    }
+
+
     /**
      * Checks if phone number is business (1800, etc)
      *
@@ -83,6 +109,10 @@ class ParsePhone {
      */
     public function isBusiness() {
         return (bool)preg_match('/^1(2(00|12)|599|70[05]|80[019]|90[012]|919)\d{6}$/', $this->phoneNumber);
+    }
+
+    public function isNotBusiness() {
+        return !$this->isBusiness();
     }
 
     /**
@@ -94,6 +124,11 @@ class ParsePhone {
         return (bool)preg_match('/^180[019]\d{6}$/', $this->phoneNumber);
     }
 
+    public function isNotTollFree() {
+        return !$this->isTollFree();
+    }
+
+
     /**
      * Checks if phone number is premium (1900)
      *
@@ -101,6 +136,10 @@ class ParsePhone {
      */
     public function isPremium() {
         return (bool)preg_match('/^19(0[012]|19)\d{6}$/', $this->phoneNumber);
+    }
+
+    public function isNotPremium() {
+        return !$this->isPremium();
     }
 
     /**
@@ -112,6 +151,9 @@ class ParsePhone {
         return (bool)preg_match('/^1919\d{6}$/', $this->phoneNumber);
     }
 
+    public function isNotErotic() {
+        return !$this->isErotic();
+    }
 
     /**
      * Transforms phone number to international format
