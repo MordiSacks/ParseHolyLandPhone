@@ -2,7 +2,7 @@
 Parse Holy land (Israel/Palestine) phone numbers
 
 ## usage
-```
+```php
 // via new instance
 $number = new ParsePhone('025121234');
 
