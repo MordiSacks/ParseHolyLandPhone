@@ -22,6 +22,7 @@ $number->isValid();
 * `isBusiness` Checks if phone number is Business (1700, 1800, etc).
 * `isTollFree` Checks if phone number is TollFree (1800, etc).
 * `isPremium` Checks if phone number is Premium (1900, etc).
+* `isKosher` Checks if phone number is Kosher (phone supports only calls).
 * `isErotic` Checks if phone number is Erotic (1919).
 * `getInternational` Returns phone number transformed to international format 025231234  > 97225231234.
 * `getPhoneNumber` Returns the parsed phone number.
