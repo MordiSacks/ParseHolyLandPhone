@@ -28,7 +28,7 @@ class ParsePhone {
      * @return bool
      */
     public function isValid() {
-        return (bool)preg_match('/^((0[23489][2356789]|0[57][10234569]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
+        return (bool)preg_match('/^((0[23489][2356789]|0[57][102345689]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
     }
 
     public function isNotValid() {
@@ -41,7 +41,7 @@ class ParsePhone {
      * @return bool
      */
     public function isIsraeli() {
-        return (bool)preg_match('/^((0[23489][356789]|0[57][102345]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
+        return (bool)preg_match('/^((0[23489][356789]|0[57][1023458]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
     }
 
     public function isNotIsraeli() {
@@ -81,7 +81,7 @@ class ParsePhone {
      * @return bool
      */
     public function isMobile() {
-        return (bool)preg_match('/^0[5][10234569]\d{7}$/', $this->phoneNumber);
+        return (bool)preg_match('/^0[5][102345689]\d{7}$/', $this->phoneNumber);
     }
 
     public function isNotMobile() {
@@ -140,6 +140,19 @@ class ParsePhone {
 
     public function isNotPremium() {
         return !$this->isPremium();
+    }
+
+    /**
+     * Checks if phone number is Kosher (phone supports only calls)
+     *
+     * @return bool
+     */
+    public function isKosher() {
+        return (bool)preg_match('/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567)\d{5}$/', $this->phoneNumber);
+    }
+
+    public function isNotKosher() {
+        return !$this->isKosher();
     }
 
     /**
