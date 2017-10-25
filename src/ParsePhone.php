@@ -1,5 +1,26 @@
 <?php
-class ParsePhone {
+
+namespace ParseHolyLandPhone;
+
+/**
+ * Class ParsePhone
+ *
+ * @method bool isNotValid()
+ * @method bool isNotIsraeli()
+ * @method bool isNotPalestinian()
+ * @method bool isNotLandLine()
+ * @method bool isNotSpecial()
+ * @method bool isNotMobile()
+ * @method bool isNotBusiness()
+ * @method bool isNotTollFree()
+ * @method bool isNotPremium()
+ * @method bool isNotKosher()
+ * @method bool isNotErotic()
+ *
+ * @package ParseHolyLandPhone
+ */
+class ParsePhone
+{
     /** @var int|string */
     protected $phoneNumber;
 
@@ -8,7 +29,8 @@ class ParsePhone {
      *
      * @param string|int $phoneNumber phone number to be parsed
      */
-    public function __construct($phoneNumber) {
+    public function __construct($phoneNumber)
+    {
         $this->phoneNumber = $phoneNumber;
         $this->fromInternational();
     }
@@ -18,7 +40,8 @@ class ParsePhone {
      *
      * @return static
      */
-    public static function create($phoneNumber) {
+    public static function create($phoneNumber)
+    {
         return new static($phoneNumber);
     }
 
@@ -27,12 +50,9 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isValid() {
+    public function isValid()
+    {
         return (bool)preg_match('/^((0[23489][2356789]|0[57][102345689]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
-    }
-
-    public function isNotValid() {
-        return !$this->isValid();
     }
 
     /**
@@ -40,12 +60,9 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isIsraeli() {
+    public function isIsraeli()
+    {
         return (bool)preg_match('/^((0[23489][356789]|0[57][1023458]\d|1(2(00|12)|599|70[05]|80[019]|90[012]|919))\d{6}|\*\d{4})$/', $this->phoneNumber);
-    }
-
-    public function isNotIsraeli() {
-        return !$this->isIsraeli();
     }
 
     /**
@@ -53,26 +70,19 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isPalestinian() {
+    public function isPalestinian()
+    {
         return (bool)preg_match('/^(0[23489]2|05[69]\d|)\d{6}$/', $this->phoneNumber);
     }
 
-    public function isNotPalestinian() {
-        return !$this->isPalestinian();
-    }
-
-
     /**
-     * Checks if phone number is lan line
+     * Checks if phone number is land line
      *
      * @return bool
      */
-    public function isLanLine() {
+    public function isLandLine()
+    {
         return (bool)preg_match('/^0([23489][2356789]|7\d{2})\d{6}$/', $this->phoneNumber);
-    }
-
-    public function isNotLanLine() {
-        return !$this->isLanLine();
     }
 
     /**
@@ -80,12 +90,9 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isMobile() {
+    public function isMobile()
+    {
         return (bool)preg_match('/^0[5][102345689]\d{7}$/', $this->phoneNumber);
-    }
-
-    public function isNotMobile() {
-        return !$this->isMobile();
     }
 
     /**
@@ -93,26 +100,19 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isSpecial() {
+    public function isSpecial()
+    {
         return (bool)preg_match('/^\*\d{4}$/', $this->phoneNumber);
     }
-
-    public function isNotSpecial() {
-        return !$this->isSpecial();
-    }
-
 
     /**
      * Checks if phone number is business (1800, etc)
      *
      * @return bool
      */
-    public function isBusiness() {
+    public function isBusiness()
+    {
         return (bool)preg_match('/^1(2(00|12)|599|70[05]|80[019]|90[012]|919)\d{6}$/', $this->phoneNumber);
-    }
-
-    public function isNotBusiness() {
-        return !$this->isBusiness();
     }
 
     /**
@@ -120,26 +120,19 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isTollFree() {
+    public function isTollFree()
+    {
         return (bool)preg_match('/^180[019]\d{6}$/', $this->phoneNumber);
     }
-
-    public function isNotTollFree() {
-        return !$this->isTollFree();
-    }
-
 
     /**
      * Checks if phone number is premium (1900)
      *
      * @return bool
      */
-    public function isPremium() {
+    public function isPremium()
+    {
         return (bool)preg_match('/^19(0[012]|19)\d{6}$/', $this->phoneNumber);
-    }
-
-    public function isNotPremium() {
-        return !$this->isPremium();
     }
 
     /**
@@ -147,12 +140,9 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isKosher() {
+    public function isKosher()
+    {
         return (bool)preg_match('/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567)\d{5}$/', $this->phoneNumber);
-    }
-
-    public function isNotKosher() {
-        return !$this->isKosher();
     }
 
     /**
@@ -160,12 +150,9 @@ class ParsePhone {
      *
      * @return bool
      */
-    public function isErotic() {
+    public function isErotic()
+    {
         return (bool)preg_match('/^1919\d{6}$/', $this->phoneNumber);
-    }
-
-    public function isNotErotic() {
-        return !$this->isErotic();
     }
 
     /**
@@ -173,14 +160,16 @@ class ParsePhone {
      * 97221231234  > 021231234
      * 972501231234 > 0501231234
      */
-    protected function fromInternational() {
+    protected function fromInternational()
+    {
         $this->phoneNumber = preg_replace('/^(972)(\d{8,9})$/', '0$2', $this->phoneNumber);
     }
 
     /**
      * @return int|string
      */
-    public function getPhoneNumber() {
+    public function getPhoneNumber()
+    {
         return $this->phoneNumber;
     }
 
@@ -189,7 +178,37 @@ class ParsePhone {
      * 021231234  > 97221231234
      * 0501231234 > 972501231234
      */
-    public function getInternational() {
+    public function getInternational()
+    {
         return preg_replace('/^(0)(\d{8,9})$/', '972$2', $this->phoneNumber);
+    }
+
+    /**
+     * isNot implementation
+     *
+     * @param $method
+     * @param $arguments
+     *
+     * @return bool
+     */
+    public function __call($method, $arguments)
+    {
+        /**
+         * Check if starts with isNot
+         */
+        if (substr($method, 0, 5) !== 'isNot') {
+            trigger_error('Call to undefined method ' . __CLASS__ . '::' . $method . '()', E_USER_ERROR);
+        }
+
+        /**
+         * Check if method exists
+         */
+        $flippedMethod = 'is' . substr($method, 5);
+
+        if (!method_exists($this, $flippedMethod)) {
+            trigger_error('Call to undefined method ' . __CLASS__ . '::' . $method . '()', E_USER_ERROR);
+        }
+
+        return !$this->{$flippedMethod}();
     }
 }

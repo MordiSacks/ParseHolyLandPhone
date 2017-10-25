@@ -16,7 +16,7 @@ $number->isValid();
 * `isValid` Checks if phone number is a valid Israeli/Palestinian phone number.
 * `isIsraeli` Checks if phone number is Israeli.
 * `isPalestinian` Checks if phone number is Palestinian.
-* `isLanLine` Checks if phone number is LanLine.
+* `isLandLine` Checks if phone number is LandLine.
 * `isSpecial` Checks if phone number is Special (*1234).
 * `isMobile` Checks if phone number is Mobile.
 * `isBusiness` Checks if phone number is Business (1700, 1800, etc).
@@ -26,3 +26,4 @@ $number->isValid();
 * `isErotic` Checks if phone number is Erotic (1919).
 * `getInternational` Returns phone number transformed to international format 025231234  > 97225231234.
 * `getPhoneNumber` Returns the parsed phone number.
+### all `is` functions have a reverse function `isNot`.
