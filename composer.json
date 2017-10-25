@@ -1,0 +1,26 @@
+{
+  "name": "ParseHolyLandPhone/ParsePhone",
+  "description": "Parse israeli/Palestinian phone numbers",
+  "keywords": [
+    "phone number",
+    "phone",
+    "Israel",
+    "Palestine",
+    "Holy Land"
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Mordi Sacks"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ParseHolyLandPhone\\": "src/"
+    }
+  }
+}
