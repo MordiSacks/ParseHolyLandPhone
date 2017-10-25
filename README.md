@@ -1,6 +1,11 @@
 # ParseHolyLandPhone
 Parse Holy land (Israel/Palestine) phone numbers
 
+# Installation
+``` 
+composer require parse-holy-land-phone/parse-phone
+```
+
 ## usage
 ```php
 // via new instance

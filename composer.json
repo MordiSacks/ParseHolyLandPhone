@@ -5,11 +5,11 @@
     "phone number",
     "phone",
     "Israel",
-    "Palestine",
+    "Palestine installation",
     "Holy Land"
   ],
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.0.2",
   "authors": [
     {
       "name": "Mordi Sacks"
