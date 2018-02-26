@@ -151,7 +151,7 @@ class ParsePhone
      *
      * @return bool
      */
-    public function isSmsAble()
+    public function isSmsable()
     {
         return $this->isNotKosher() && $this->isMobile();
     }
