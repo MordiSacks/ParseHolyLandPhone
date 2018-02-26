@@ -145,6 +145,18 @@ class ParsePhone
         return (bool)preg_match('/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567)\d{5}$/', $this->phoneNumber);
     }
 
+    
+    /**
+     * Checks if phone number can receive sms
+     *
+     * @return bool
+     */
+    public function isSmsAble()
+    {
+        return $this->isNotKosher() && $this->isMobile();
+    }
+
+    
     /**
      * Checks if phone number is erotic (1919)
      *
