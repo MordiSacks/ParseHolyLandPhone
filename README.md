@@ -31,6 +31,7 @@ $number->isValid();
 * `isErotic` Checks if phone number is Erotic (1919).
 * `isSmsable` Checks if phone number can receive an sms (text) .
 * `getInternational` Returns phone number transformed to international format 025231234  > 97225231234.
+* `getLocal` Returns phone number transformed to local format 97225231234 > 025231234.
 * `getPhoneNumber` Returns the parsed phone number.
 ### all `is` functions have a reverse function `isNot`.
 

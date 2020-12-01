@@ -32,7 +32,7 @@ class ParsePhone
     public function __construct($phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
-        $this->fromInternational();
+        $this->normalize();
     }
 
     /**
@@ -43,6 +43,15 @@ class ParsePhone
     public static function create($phoneNumber)
     {
         return new static($phoneNumber);
+    }
+
+    protected function normalize()
+    {
+        // Remove any non digits
+        $this->phoneNumber = preg_replace('/[^\d]/', '', $this->phoneNumber);
+
+        // Assure is local format
+        $this->phoneNumber = preg_replace('/^(972)(\d{8,9})$/', '0$2', $this->phoneNumber);
     }
 
     /**
@@ -145,7 +154,7 @@ class ParsePhone
         return (bool)preg_match('/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567)\d{5}$/', $this->phoneNumber);
     }
 
-    
+
     /**
      * Checks if phone number can receive sms
      *
@@ -156,7 +165,7 @@ class ParsePhone
         return $this->isNotKosher() && $this->isMobile();
     }
 
-    
+
     /**
      * Checks if phone number is erotic (1919)
      *
@@ -165,16 +174,6 @@ class ParsePhone
     public function isErotic()
     {
         return (bool)preg_match('/^1919\d{6}$/', $this->phoneNumber);
-    }
-
-    /**
-     * Transforms phone number to local format
-     * 97221231234  > 021231234
-     * 972501231234 > 0501231234
-     */
-    protected function fromInternational()
-    {
-        $this->phoneNumber = preg_replace('/^(972)(\d{8,9})$/', '0$2', $this->phoneNumber);
     }
 
     /**
@@ -193,6 +192,16 @@ class ParsePhone
     public function getInternational()
     {
         return preg_replace('/^(0)(\d{8,9})$/', '972$2', $this->phoneNumber);
+    }
+
+    /**
+     * Returns the number in local format
+     *
+     * @return int|string
+     */
+    public function getLocal()
+    {
+        return $this->phoneNumber;
     }
 
     /**
