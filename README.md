@@ -1,6 +1,12 @@
 # ParseHolyLandPhone
 Parse Holy land (Israel/Palestine) phone numbers
 
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/parse-holy-land-phone/parse-phone.svg?style=flat-square)](https://packagist.org/packages/parse-holy-land-phone/parse-phone)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/MordiSacks/ParseHolyLandPhone/run-tests.yml?branch=master&label=tests&style=flat-square)](https://github.com/MordiSacks/ParseHolyLandPhone/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/parse-holy-land-phone/parse-phone.svg?style=flat-square)](https://packagist.org/packages/parse-holy-land-phone/parse-phone)
+
+
 # Installation
 ``` 
 composer require parse-holy-land-phone/parse-phone
