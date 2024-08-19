@@ -20,8 +20,7 @@ namespace ParseHolyLandPhone;
  */
 class ParsePhone
 {
-    /** @var string */
-    protected $phoneNumber;
+    protected string $phoneNumber;
 
     /** ParsePhone constructor. */
     public function __construct(string $phoneNumber) {
@@ -34,12 +33,12 @@ class ParsePhone
         return new self($phoneNumber);
     }
 
-    protected function normalize() {
+    protected function normalize(): void {
         // Remove any non digits
-        $this->phoneNumber = preg_replace('/\D/', '', $this->phoneNumber);
+        $this->phoneNumber = (string)preg_replace('/\D/', '', $this->phoneNumber);
 
         // Assure is local format
-        $this->phoneNumber = preg_replace('/^(972)(\d{8,9})$/', '0$2', $this->phoneNumber);
+        $this->phoneNumber = (string)preg_replace('/^(972)(\d{8,9})$/', '0$2', $this->phoneNumber);
     }
 
     /** Checks if phone number is a valid Israeli/Palestinian phone number */
@@ -112,7 +111,7 @@ class ParsePhone
      * 0501231234 > 972501231234
      */
     public function getInternational(): string {
-        return preg_replace('/^(0)(\d{8,9})$/', '972$2', $this->phoneNumber);
+        return (string)preg_replace('/^(0)(\d{8,9})$/', '972$2', $this->phoneNumber);
     }
 
     /** Returns the number in local format */
@@ -121,9 +120,9 @@ class ParsePhone
     }
 
     /** isNot implementation */
-    public function __call($method, $arguments): bool {
+    public function __call(string $method, array $arguments): bool {
         /** Check if starts with isNot */
-        if (substr($method, 0, 5) !== 'isNot') {
+        if (!str_starts_with($method, 'isNot')) {
             trigger_error('Call to undefined method ' . __CLASS__ . '::' . $method . '()', E_USER_ERROR);
         }
 

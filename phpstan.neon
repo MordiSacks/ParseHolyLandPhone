@@ -1,7 +1,11 @@
 parameters:
+    editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+    editorUrlTitle: 'file:///%%file%%:%%line%%'
 
     paths:
         - src/
 
-    # Level 9 is the highest level
-    level: 5
+    level: 9
+
+    ignoreErrors:
+        - '#^Method ParseHolyLandPhone\\ParsePhone::__call\(\) has parameter \$arguments with no value type specified in iterable type array\.$#'
