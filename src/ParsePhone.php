@@ -88,7 +88,8 @@ class ParsePhone
 
     /** Checks if phone number is Kosher (phone supports only calls) */
     public function isKosher(): bool {
-        return (bool)preg_match('/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567)\d{5}$/', $this->phoneNumber);
+        if (!self::isValid()) return false; // if nubmer is not valid - always return false
+        return (bool)preg_match('/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567|55410|55400|55401|55402|55760|5532|5552)\d+$/', $this->phoneNumber);
     }
 
     /** Checks if phone number can receive sms */
